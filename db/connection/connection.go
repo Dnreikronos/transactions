@@ -7,8 +7,6 @@ import (
 	"gorm.io/gorm"
 )
 
-var DB *gorm.DB
-
 func OpenConnection() *gorm.DB {
 	db, err := gorm.Open(sqlite.Open("transactions.db"), &gorm.Config{})
 	if err != nil {
