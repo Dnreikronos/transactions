@@ -1,0 +1,5 @@
+[api]
+port = "9090"
+
+[database]
+path = "transactions.db"
