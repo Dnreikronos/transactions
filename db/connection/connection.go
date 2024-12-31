@@ -14,5 +14,6 @@ func OpenConnection() *gorm.DB {
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
-	log.Println("Database connected sucessfully!")
+	log.Println("Database connected successfully!")
+	return db
 }
