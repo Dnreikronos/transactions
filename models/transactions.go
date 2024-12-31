@@ -12,3 +12,8 @@ type Transactions struct {
 	Value       int64     `json:"value"`
 	Date        time.Time `json:"date"`
 }
+
+type TransactionsInput struct {
+	Description int64 `json:"description" binding:"required,gt=0"`
+	Value       int64 `json:"value" binding:"required,gt=0"`
+}
