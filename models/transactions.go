@@ -11,7 +11,7 @@ type Transactions struct {
 	ID          uuid.UUID `json:"id" gorm:"type:uuid;primaryKey;"`
 	Description string    `json:"description" gorm:"size:50;not null"`
 	Value       float64   `json:"value" gorm:"not null;check:value > 0"`
-	Date        time.Time `json:"date"`
+	Date        time.Time `json:"date" gorm:"not null"`
 }
 
 type TransactionsInput struct {
