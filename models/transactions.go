@@ -15,8 +15,8 @@ type Transactions struct {
 }
 
 type TransactionsInput struct {
-	Description int64 `json:"description" binding:"required,gt=0"`
-	Value       int64 `json:"value" binding:"required,gt=0"`
+	Description string `json:"description" binding:"required,gt=0"`
+	Value       int64  `json:"value" binding:"required,gt=0"`
 }
 
 func (t *Transactions) BeforeCreate(d *gorm.DB) (err error) {
