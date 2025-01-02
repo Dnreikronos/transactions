@@ -9,13 +9,13 @@ import (
 
 type Transactions struct {
 	ID          uuid.UUID `json:"id" gorm:"type:uuid;primaryKey;"`
-	Description string    `json:"description"`
+	Description string    `json:"description" gorm:"size:50;not null"`
 	Value       int64     `json:"value"`
 	Date        time.Time `json:"date"`
 }
 
 type TransactionsInput struct {
-	Description string `json:"description" binding:"required,gt=0"`
+	Description string `json:"description" binding:"required,max=50"`
 	Value       int64  `json:"value" binding:"required,gt=0"`
 }
 
