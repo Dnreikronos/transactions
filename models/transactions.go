@@ -17,6 +17,7 @@ type Transactions struct {
 type TransactionsInput struct {
 	Description string  `json:"description" binding:"required,max=50"`
 	Value       float64 `json:"value" binding:"required,gt=0"`
+	Date        string  `json:"date" binding:"required,datetime=2006-01-02"`
 }
 
 func (t *Transactions) BeforeCreate(d *gorm.DB) (err error) {
