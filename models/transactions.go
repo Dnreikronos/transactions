@@ -10,7 +10,7 @@ import (
 type Transactions struct {
 	ID          uuid.UUID `json:"id" gorm:"type:uuid;primaryKey;"`
 	Description string    `json:"description" gorm:"size:50;not null"`
-	Value       int64     `json:"value"`
+	Value       float64   `json:"value" gorm:"not null;check:value > 0"`
 	Date        time.Time `json:"date"`
 }
 
