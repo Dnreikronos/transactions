@@ -18,17 +18,16 @@ func main() {
 	}
 
 	db := connection.OpenConnection()
-
 	migrations.RunMigrations(db)
 
 	r := gin.Default()
-
-	routes.RegisterRoutes(r)
 
 	r.Use(func(c *gin.Context) {
 		c.Set("db", db)
 		c.Next()
 	})
+
+	routes.RegisterRoutes(r)
 
 	http.ListenAndServe(fmt.Sprintf(":%s", configs.GetServerPort()), r)
 }
