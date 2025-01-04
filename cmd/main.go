@@ -8,6 +8,7 @@ import (
 	"github.com/Dnreikronos/transactions/db/connection"
 	"github.com/Dnreikronos/transactions/db/migrations"
 	"github.com/Dnreikronos/transactions/routes"
+	"github.com/Dnreikronos/transactions/worker"
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,6 +21,7 @@ func main() {
 	db := connection.OpenConnection()
 	migrations.RunMigrations(db)
 
+	go worker.StartTransactionWorker(db)
 	r := gin.Default()
 
 	r.Use(func(c *gin.Context) {
@@ -29,5 +31,9 @@ func main() {
 
 	routes.RegisterRoutes(r)
 
-	http.ListenAndServe(fmt.Sprintf(":%s", configs.GetServerPort()), r)
+	port := configs.GetServerPort()
+	fmt.Printf("Server running on port %s\n", port)
+	if err := http.ListenAndServe(fmt.Sprintf(":%s", port), r); err != nil {
+		panic(fmt.Sprintf("Failed to start server: %v", err))
+	}
 }
