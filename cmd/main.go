@@ -8,6 +8,7 @@ import (
 	"github.com/Dnreikronos/transactions/db/connection"
 	"github.com/Dnreikronos/transactions/db/migrations"
 	"github.com/Dnreikronos/transactions/routes"
+	"github.com/Dnreikronos/transactions/worker"
 	"github.com/gin-gonic/gin"
 )
 
