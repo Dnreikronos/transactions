@@ -1,12 +1,13 @@
 package handlers
 
 import (
+	"encoding/json"
 	"net/http"
 	"time"
 
 	"github.com/Dnreikronos/transactions/models"
+	"github.com/Dnreikronos/transactions/queue"
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 )
 
 func CreateTransaction(c *gin.Context) {
@@ -29,13 +30,21 @@ func CreateTransaction(c *gin.Context) {
 		Date:        parsedDate,
 	}
 
-	db := c.MustGet("db").(*gorm.DB)
-	if err := db.Create(&transaction).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save transaction"})
+	message, err := json.Marshal(transaction)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to serialize transaction"})
 		return
 	}
 
-	c.JSON(http.StatusOK, transaction)
+	if err := queue.PublishToQueue(message); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to enqueue transaction"})
+		return
+	}
+
+	c.JSON(http.StatusAccepted, gin.H{
+		"message":     "Transaction received and will be processed asynchronously",
+		"transaction": transaction,
+	})
 }
 
 func roundToCents(value float64) float64 {
