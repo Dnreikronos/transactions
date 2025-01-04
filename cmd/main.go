@@ -21,6 +21,7 @@ func main() {
 	db := connection.OpenConnection()
 	migrations.RunMigrations(db)
 
+	go worker.StartTransactionWorker(db)
 	r := gin.Default()
 
 	r.Use(func(c *gin.Context) {
