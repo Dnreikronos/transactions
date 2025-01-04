@@ -17,3 +17,11 @@ func PublishToQueue(message []byte) error {
 		return errors.New("queue is full")
 	}
 }
+
+func ConsumeQueue(process func(message []byte)) {
+	go func() {
+		for message := range transactionQueue {
+			process(message)
+		}
+	}()
+}
