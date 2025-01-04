@@ -4,5 +4,9 @@ build:
 run: build
 	@./bin/transactions cmd/main.go
 
-test:
-	@go test -v ./...
+testHandler:
+	@go test -v ./tests/handler_test.go
+testWorker:
+	@go test -v ./tests/worker_test.go
+testQueue:
+	@go test -v ./tests/queue_test.go
