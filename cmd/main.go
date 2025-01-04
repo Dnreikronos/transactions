@@ -29,5 +29,9 @@ func main() {
 
 	routes.RegisterRoutes(r)
 
-	http.ListenAndServe(fmt.Sprintf(":%s", configs.GetServerPort()), r)
+	port := configs.GetServerPort()
+	fmt.Printf("Server running on port %s\n", port)
+	if err := http.ListenAndServe(fmt.Sprintf(":%s", port), r); err != nil {
+		panic(fmt.Sprintf("Failed to start server: %v", err))
+	}
 }
