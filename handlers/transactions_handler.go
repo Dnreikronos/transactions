@@ -8,7 +8,6 @@ import (
 	"github.com/Dnreikronos/transactions/models"
 	"github.com/Dnreikronos/transactions/queue"
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 )
 
 func CreateTransaction(c *gin.Context) {
