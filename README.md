@@ -4,7 +4,7 @@
 <h2>Funcionalidades</h2>
 <ul>
     <li><strong>Criar e recuperar dados de transações:</strong> A aplicação permite criar e consultar transações financeiras através de uma API RESTful.</li>
-    <li><strong>Conversão de moeda:</strong> A aplicação usa a API do <a href="https://api.fiscaldata.treasury.gov" target="_blank">Treasury Reporting Rates API</a> para buscar taxas de câmbio e realizar a conversão de valores com base na moeda e data da transação.</li>
+    <li><strong>Conversão de moeda:</strong> A aplicação usa a API do <a href="https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange" target="_blank">Treasury Reporting Rates API</a> para buscar taxas de câmbio e realizar a conversão de valores com base na moeda e data da transação.</li>
 </ul>
 
 <h2>Stack de Tecnologias</h2>
