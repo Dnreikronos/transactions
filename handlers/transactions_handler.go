@@ -28,6 +28,7 @@ func CreateTransaction(c *gin.Context) {
 		Description: input.Description,
 		Value:       roundToCents(input.Value),
 		Date:        parsedDate,
+		Currency:    input.Currency,
 	}
 
 	message, err := json.Marshal(transaction)

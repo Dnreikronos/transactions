@@ -9,7 +9,7 @@ import (
 )
 
 func TestConsumeQueue(t *testing.T) {
-	message := []byte(`{"description": "Test transaction", "value": 100.00, "date": "2025-01-02"}`)
+	message := []byte(`{"description": "Test transaction", "value": 100.00, "date": "2025-01-02", "currency": "USD"}`)
 
 	processedMessages := make(chan []byte, 1)
 
