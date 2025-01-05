@@ -1,5 +1,4 @@
 <h1>Transactions</h1>
-
 <p>O projeto <strong>Transactions</strong> é uma aplicação backend desenvolvida em Go (Golang) que permite manipular transações financeiras, calcular valores convertidos com base nas taxas de câmbio e realizar persistência de dados em um banco de dados em memória.</p>
 
 <h2>Funcionalidades</h2>
