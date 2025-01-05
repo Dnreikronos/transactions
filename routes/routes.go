@@ -7,4 +7,5 @@ import (
 
 func RegisterRoutes(r *gin.Engine) {
 	r.POST("/createTransactions", handlers.CreateTransaction)
+	r.GET("/transaction/:id/currency", handlers.GetTransactionInCurrency)
 }
