@@ -22,17 +22,22 @@ func TestCreateTransaction_Validation(t *testing.T) {
 	}{
 		{
 			name:       "Valid input",
-			body:       `{"description": "Test transaction", "value": 50.99, "date": "2025-01-02"}`,
+			body:       `{"description": "Test transaction", "value": 50.99, "date": "2025-01-02", "currency": "USD"}`,
 			statusCode: http.StatusAccepted,
 		},
 		{
 			name:       "Invalid value",
-			body:       `{"description": "Test transaction", "value": -10.00, "date": "2025-01-02"}`,
+			body:       `{"description": "Test transaction", "value": -10.00, "date": "2025-01-02", "currency": "USD"}`,
 			statusCode: http.StatusBadRequest,
 		},
 		{
 			name:       "Missing description",
-			body:       `{"value": 50.99, "date": "2025-01-02"}`,
+			body:       `{"value": 50.99, "date": "2025-01-02", "currency": "USD"}`,
+			statusCode: http.StatusBadRequest,
+		},
+		{
+			name:       "Missing currency",
+			body:       `{"description": "Test transaction", "value": 50.99, "date": "2025-01-02"}`,
 			statusCode: http.StatusBadRequest,
 		},
 	}
