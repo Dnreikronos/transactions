@@ -1,41 +1,41 @@
 <h1>Transactions</h1>
-<p>O projeto <strong>Transactions</strong> é uma aplicação backend desenvolvida em Go (Golang) que permite manipular transações financeiras, calcular valores convertidos com base nas taxas de câmbio e realizar persistência de dados em um banco de dados em memória.</p>
+<p>The <strong>Transactions</strong> project is a backend application developed in Go (Golang) that allows for the handling of financial transactions, currency value conversions based on exchange rates, and data persistence in an in-memory database.</p>
 
-<h2>Funcionalidades</h2>
+<h2>Features</h2>
 <ul>
-    <li><strong>Criar e recuperar dados de transações:</strong> A aplicação permite criar e consultar transações financeiras através de uma API RESTful.</li>
-    <li><strong>Conversão de moeda:</strong> A aplicação usa a API do <a href="https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange" target="_blank">Treasury Reporting Rates API</a> para buscar taxas de câmbio e realizar a conversão de valores com base na moeda e data da transação.</li>
+    <li><strong>Create and retrieve transaction data:</strong> The application allows creating and querying financial transactions through a RESTful API.</li>
+    <li><strong>Currency conversion:</strong> The application uses the <a href="https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange" target="_blank">Treasury Reporting Rates API</a> to fetch exchange rates and perform value conversion based on the currency and transaction date.</li>
 </ul>
 
-<h2>Stack de Tecnologias</h2>
+<h2>Technology Stack</h2>
 <ul>
-    <li><strong>Go (Golang):</strong> Linguagem de programação principal utilizada para o desenvolvimento da aplicação.</li>
-    <li><strong>Gin:</strong> Framework web para Go, utilizado para construção da API RESTful.</li>
-    <li><strong>Gorm:</strong> ORM utilizado para interagir com o banco de dados (no caso, um banco de dados em memória com SQLMock para testes).</li>
-    <li><strong>SQLMock:</strong> Biblioteca para testes unitários que simula interações com o banco de dados.</li>
-    <li><strong>Godotenv:</strong> Para o gerenciamento de variáveis de ambiente.</li>
-    <li><strong>SQLite:</strong> Banco de dados utilizado para persistência de dados em um ambiente de desenvolvimento simples.</li>
-    <li><strong>Makefile:</strong> Para automatizar comandos de build, execução e testes da aplicação.</li>
+    <li><strong>Go (Golang):</strong> The main programming language used for application development.</li>
+    <li><strong>Gin:</strong> A web framework for Go, used for building the RESTful API.</li>
+    <li><strong>Gorm:</strong> An ORM used for interacting with the database (in this case, an in-memory database with SQLMock for testing).</li>
+    <li><strong>SQLMock:</strong> A library for unit testing that simulates interactions with the database.</li>
+    <li><strong>Godotenv:</strong> For managing environment variables.</li>
+    <li><strong>SQLite:</strong> The database used for data persistence in a simple development environment.</li>
+    <li><strong>Makefile:</strong> For automating build, run, and test commands for the application.</li>
 </ul>
 
-<h2>Funcionalidades da API</h2>
+<h2>API Features</h2>
 
-<h3>1. Criar Transação</h3>
-<p>A API permite criar transações financeiras com os seguintes parâmetros:</p>
+<h3>1. Create Transaction</h3>
+<p>The API allows creating financial transactions with the following parameters:</p>
 <ul>
-    <li><strong>id</strong>: ID único da transação</li>
-    <li><strong>description</strong>: Descrição da transação</li>
-    <li><strong>value</strong>: Valor da transação</li>
-    <li><strong>date</strong>: Data da transação</li>
-    <li><strong>currency</strong>: Moeda da transação</li>
+    <li><strong>id</strong>: Unique transaction ID</li>
+    <li><strong>description</strong>: Transaction description</li>
+    <li><strong>value</strong>: Transaction value</li>
+    <li><strong>date</strong>: Transaction date</li>
+    <li><strong>currency</strong>: Transaction currency</li>
 </ul>
 
-<h3>2. Consultar Transação e Conversão</h3>
-<p>A API permite consultar uma transação e obter o valor convertido para uma moeda diferente. O endpoint espera que a moeda seja fornecida como um parâmetro de consulta.</p>
-<p><strong>Exemplo:</strong> <code>/transaction/:id/currency?currency=Brazil-Real</code></p>
+<h3>2. Query Transaction and Conversion</h3>
+<p>The API allows querying a transaction and obtaining the value converted to a different currency. The endpoint expects the currency to be provided as a query parameter.</p>
+<p><strong>Example:</strong> <code>/transaction/:id/currency?currency=Brazil-Real</code></p>
 
-<h2>Estrutura de Pastas</h2>
-<p>A estrutura de pastas do projeto é organizada da seguinte forma:</p>
+<h2>Folder Structure</h2>
+<p>The project's folder structure is organized as follows:</p>
 <pre>
 /cmd
     /main.go                  
@@ -56,35 +56,32 @@
 /Makefile                     
 </pre>
 
-<h2>Como Rodar o Projeto</h2>
+<h2>How to Run the Project</h2>
 
-<h3>Requisitos</h3>
+<h3>Requirements</h3>
 <ul>
-    <li>Go 1.18 ou superior</li>
-    <li>Instalação de dependências do Go (executar <code>go mod tidy</code>)</li>
+    <li>Go 1.18 or higher</li>
+    <li>Install Go dependencies (run <code>go mod tidy</code>)</li>
 </ul>
 
-<h3>Comandos</h3>
+<h3>Commands</h3>
 <ul>
-    <li><strong>Build:</strong> Compila a aplicação.
+    <li><strong>Build:</strong> Compiles the application.
         <pre>make build</pre>
     </li>
-    <li><strong>Rodar a aplicação:</strong> Inicia a aplicação.
+    <li><strong>Run the application:</strong> Starts the application.
         <pre>make run</pre>
     </li>
-    <li><strong>Testar manipuladores:</strong> Executa os testes dos manipuladores da API.
+    <li><strong>Test handlers:</strong> Runs the tests for the API handlers.
         <pre>make testHandler</pre>
     </li>
-    <li><strong>Testar workers:</strong> Executa os testes para a lógica de workers.
+    <li><strong>Test workers:</strong> Runs the tests for the worker logic.
         <pre>make testWorker</pre>
     </li>
-    <li><strong>Testar fila:</strong> Executa os testes para a fila de memória.
+    <li><strong>Test queue:</strong> Runs the tests for the memory queue.
         <pre>make testQueue</pre>
     </li>
 </ul>
 
-<h2>Testes</h2>
-<p>A aplicação conta com testes unitários para os manipuladores, workers e fila. Você pode executá-los com os comandos listados acima, através do Makefile.</p>
-
-</body>
-</html>
+<h2>Tests</h2>
+<p>The application includes unit tests for the handlers, workers, and queue. You can run them with the commands listed above, using the Makefile.</p>
